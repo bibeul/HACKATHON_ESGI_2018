@@ -54,6 +54,7 @@
             android:layout_height="50dp"
             android:textSize="30dp"
             android:textColor="#2F302F"
+            android:backgroundTint="#6B7782"
             android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
             android:text="" />
@@ -74,6 +75,7 @@
             android:layout_height="50dp"
             android:textSize="30dp"
             android:textColor="#2F302F"
+            android:backgroundTint="#6B7782"
             android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
             android:text="" />
@@ -95,6 +97,7 @@
             android:layout_height="50dp"
             android:textSize="30dp"
             android:textColor="#2F302F"
+            android:backgroundTint="#6B7782"
             android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
             android:text="" />
@@ -115,6 +118,7 @@
             android:layout_height="50dp"
             android:textSize="30dp"
             android:textColor="#2F302F"
+            android:backgroundTint="#6B7782"
             android:layout_marginBottom="20dp"
             android:inputType="textPassword"
             android:text="" />
