@@ -84,5 +84,14 @@
             android:text="@string/authenticate"
             android:textColor="#FFFFFF"/>
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@drawable/background"
+            android:textSize="10dp"
+            android:text="register"
+            android:textColor="#6B7782"/>
+
     </LinearLayout>
 </LinearLayout>
