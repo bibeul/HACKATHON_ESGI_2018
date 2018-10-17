@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">solistrophe</string>
+    <string name="authenticate">Sign In</string>
 </resources>
