@@ -8,8 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyEditTextTheme">
+        <!-- Used for the bottom line when not selected / focused -->
+        <item name="colorControlNormal">#000000</item>
+        <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
+    </style>
+
     <style name="generalnotitle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="blackUnderline" parent="android:Widget.EditText">
+        <item name="android:textColorSecondary">#000000</item>
     </style>
 
 </resources>
