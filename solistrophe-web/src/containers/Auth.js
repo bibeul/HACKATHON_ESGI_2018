@@ -2,7 +2,7 @@ import decode from 'jwt-decode';
 
 export default class Auth{
     constructor(domain) {
-        this.domain = domain || 'http://localhost:3000' // API server domain
+        this.domain = domain || 'http://localhost:3000/api' // API server domain
         this.fetch = this.fetch.bind(this)
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
@@ -10,26 +10,39 @@ export default class Auth{
 
     login(username, password) {
         // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/user/signin`, {
+        return this.fetch(`${this.domain}/Accounts/login`, {
             method: 'POST',
             body: JSON.stringify({
                 username,
                 password
             })
         }).then(res => {
-            this.setToken(res.token) // Setting the token in localStorage
-            return Promise.resolve(res);
+            this.setToken(res.id) // Setting the token in localStorage
+            this.fetch(`${this.domain}/Accounts/`+ res.userId + '?access_token=' + this.getToken(), {
+                method: 'GET'
+            }).then(res => {
+                if(res.rank < 2){
+                    this.setToken('');
+                    return Promise.reject(new Error('fail'))
+                } else {
+                    return Promise.resolve(res);
+                }
+            })
         })
     }
 
-    register(username, email, password) {
+    register(username, email, password, firstname, lastname, phoneNumber, address) {
         // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/user/register`, {
-            method: 'PUT',
+        return this.fetch(`${this.domain}/Accounts`, {
+            method: 'POST',
             body: JSON.stringify({
                 username,
                 email,
-                password
+                password,
+                lastname,
+                firstname,
+                phoneNumber,
+                address
             })
         }).then(res => {
             return Promise.resolve(res);

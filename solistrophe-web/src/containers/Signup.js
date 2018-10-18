@@ -7,16 +7,21 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.Auth = new Auth();
-
         this.state = {
             username: "",
             email: "",
-            password: ""
+            password: "",
+            lastname: "",
+            firstname: "",
+            phoneNumber: "",
+            address: ""
         };
     }
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.username.length > 0;
+        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.username.length > 0
+            && this.state.firstname.length > 0 && this.state.lastname.length > 0 && this.state.phoneNumber.length > 0
+            && this.state.address.length > 0;
     }
 
     handleChange = event => {
@@ -28,7 +33,8 @@ export default class Login extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        this.Auth.register(this.state.username, this.state.email, this.state.password)
+        this.Auth.register(this.state.username, this.state.email, this.state.password, this.state.firstname,
+            this.state.lastname, this.state.phoneNumber, this.state.address)
             .then(res =>{
                 this.props.history.replace('/');
             })
@@ -74,6 +80,38 @@ export default class Login extends Component {
                             value={this.state.password}
                             onChange={this.handleChange}
                             type="password"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="lastname" bsSize="large">
+                        <ControlLabel>LastName</ControlLabel>
+                        <FormControl
+                            value={this.state.lastname}
+                            onChange={this.handleChange}
+                            type="text"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="firstname" bsSize="large">
+                        <ControlLabel>FirstName</ControlLabel>
+                        <FormControl
+                            value={this.state.firstname}
+                            onChange={this.handleChange}
+                            type="text"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="phoneNumber" bsSize="large">
+                        <ControlLabel>Phone Number</ControlLabel>
+                        <FormControl
+                            value={this.state.phoneNumber}
+                            onChange={this.handleChange}
+                            type="text"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="address" bsSize="large">
+                        <ControlLabel>Address</ControlLabel>
+                        <FormControl
+                            value={this.state.address}
+                            onChange={this.handleChange}
+                            type="text"
                         />
                     </FormGroup>
                     <Button

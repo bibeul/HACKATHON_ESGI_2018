@@ -1,15 +1,14 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
-import Maps from "./containers/Maps"
+import Users from "./containers/Users"
 import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
-import Plugins from "./containers/Plugins";
+import Sinisters from "./containers/Sinisters";
 import Signup from "./containers/Signup";
 import UploadMap from "./containers/UploadMap";
 import UploadPlugin from "./containers/UploadPlugin";
 import AppliedRoute from "./components/AppliedRoute";
-import ScoreMap from "./containers/ScoreMap";
 
 
 
@@ -17,12 +16,11 @@ export default ({ childProps }) =>
     <Switch>
         <AppliedRoute path="/" exact component={Home} props={childProps} />
         <AppliedRoute path="/login" exact component={Login} props={childProps} />
-        <Route path="/maps" exact component={Maps} />
-        <Route path="/plugins" exact component={Plugins} />
+        <Route path="/users" exact component={Users} />
+        <Route path="/sinisters" exact component={Sinisters} />
         <Route path="/register" exact component={Signup} />
         <Route path="/uploadMap" exact component={UploadMap}/>
         <Route path="/uploadPlugin" exact component={UploadPlugin}/>
-        <Route path="/map/:mapname" component={ScoreMap}/>
         <Route component={NotFound} />
     </Switch>;
 

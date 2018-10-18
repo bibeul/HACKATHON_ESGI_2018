@@ -33,22 +33,25 @@ class App extends Component {
                 <Navbar fluid collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to="/">Hack.me</Link>
+                            <Link to="/">SoliStrophe</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle />
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <LinkContainer to="/plugins">
-                                <NavItem>Plugins</NavItem>
-                            </LinkContainer>
-                            <LinkContainer to="/maps">
-                                <NavItem>Maps</NavItem>
-                            </LinkContainer>
+
                             {this.state.isLogged
-                                ? <LinkContainer to="/login">
+                                ?<Fragment>
+                                <LinkContainer to="/login">
                                     <NavItem>Logout</NavItem>
                                 </LinkContainer>
+                                <LinkContainer to="/sinisters">
+                                    <NavItem>Sinisters</NavItem>
+                                </LinkContainer>
+                                <LinkContainer to="/users">
+                                    <NavItem>Users</NavItem>
+                                </LinkContainer>
+                                </Fragment>
                                 : <Fragment>
                                     <LinkContainer to="/register">
                                         <NavItem>Signup</NavItem>
