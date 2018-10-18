@@ -21,12 +21,4 @@
             android:popupTheme="@style/AppTheme"/>
 
     </android.support.design.widget.AppBarLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background=""
-        android:text="Button" />
-
 </LinearLayout>
