@@ -35,6 +35,11 @@ export default class Users extends Component {
             });
     }
 
+    handlesubmit = (userid) => (event) => {
+        event.preventDefault();
+        this.Auth.banUser(userid);
+    }
+
     render(){
         return (
                 <div class="Users">
@@ -43,8 +48,8 @@ export default class Users extends Component {
                         <p>{user.firstname}</p>
                         <p>{user.lastname}</p>
                         <div class="allButton">
-                            <LinkContainer to={"/user/"+user.name}><button type="submit">Edit user</button></LinkContainer>
-                            <LinkContainer to={"/user/"+user.name}><button type="submit">Ban User</button></LinkContainer>
+                            <LinkContainer to={"/user/"+user.id}><button type="submit">Edit user</button></LinkContainer>
+                            <button type="submit" onClick={this.handlesubmit(user.id)}>Ban User</button>
                         </div>
                     </div>
                 )}

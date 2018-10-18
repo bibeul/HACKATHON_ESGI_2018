@@ -3,24 +3,27 @@ import "../style/UploadForm.css";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import Auth from './Auth';
 
-export default class UploadMap extends Component {
+export default class User extends Component {
     constructor(props){
         super(props);
         this.Auth = new Auth();
         this.state = {
-            mapname: "",
-            description: "",
-            mapfile: "",
-            mapsprites: "",
-            mapriddle: "",
-            riddles: []
+            username: "",
+            lastname: "",
+            firstname: "",
+            address: "",
+            phoneNumber: "",
+            rank: "",
+            email: "",
+            userid: this.props.match.params.userid
         }
     }
 
 
 
     validateForm() {
-        return this.state.mapname.length > 0 && this.state.mapfile.length > 0 && this.state.mapsprites.length > 0 && this.state.description.length > 0 && this.state.mapriddle.length > 0;
+        return this.state.email.length > 0 && this.state.lastname.length > 0 && this.state.address.length > 0 &&
+            this.state.phoneNumber.length > 0 && this.state.firstname.length > 0 && this.state.rank.length > 0;
     }
 
     handleChange = event => {
@@ -28,38 +31,6 @@ export default class UploadMap extends Component {
             [event.target.id]: event.target.value
 
         });
-    }
-
-    addRiddle(id) {
-        var name = "mapriddle" + id;
-        return (<FormGroup controlId={name} bsSize="large">
-            <ControlLabel>Upload Riddle</ControlLabel>
-            <FormControl
-                name={name}
-                id={name}
-                type="file"
-            />
-        </FormGroup>)
-    }
-
-    validateAdd(){
-        return this.state.riddles.length < 2;
-    }
-    handleAddRiddle = () => {
-        this.setState({
-            riddles: this.state.riddles.concat(["riddle"+this.state.riddles.length])
-        })
-    }
-
-    validateRemove(){
-        return this.state.riddles.length > 0;
-    }
-    handleRemoveRiddle = () => {
-        this.state.riddles.pop();
-        var newRiddles = this.state.riddles;
-        this.setState({
-            riddles: newRiddles
-        })
     }
 
     handleSubmit = event => {
@@ -83,89 +54,72 @@ export default class UploadMap extends Component {
             alert('Please login')
             this.props.history.replace('/login');
         }
-
+        this.Auth.fetch(this.Auth.domain + '/Accounts/' + this.state.userid + '?access_token=' + this.Auth.getToken(),{
+            method: 'GET'
+        }).then(res => {
+            console.log(res);
+        })
     }
 
 
     render() {
         return (
             <div className="Upload">
-                <form onSubmit={this.handleSubmit}
-                    /*action = "http://localhost:8080/map/upload"*/
-                      method="post" enctype="multipart/form-data"
-                      name="mapUpload">
-                    <FormGroup controlId="mapname" bsSize="large">
-                        <ControlLabel>Map name</ControlLabel>
+                <form onSubmit={this.handleSubmit}>
+                    <FormGroup controlId="lastname" bsSize="large">
+                        <ControlLabel>LastName</ControlLabel>
                         <FormControl
-                            name="mapname"
-                            id="mapname"
+                            name="lastname"
+                            id="lastname"
                             maxLength="255"
                             autoFocus
                             type="text"
-                            value={this.state.mapname}
+                            value={this.state.lastname}
                             onChange={this.handleChange}
                         />
                     </FormGroup>
-                    <FormGroup controlId="description" bsSize="large">
-                        <ControlLabel>Map description</ControlLabel>
+                    <FormGroup controlId="firstname" bsSize="large">
+                        <ControlLabel>FirstName</ControlLabel>
                         <FormControl
-                            name="description"
+                            name="firstname"
                             maxLength="255"
-                            componentClass="textarea"
-                            id="description"
+                            id="firstname"
                             autoFocus
                             type="text"
-                            value={this.state.description}
+                            value={this.state.firstname}
                             onChange={this.handleChange}
                         />
                     </FormGroup>
-                    <FormGroup controlId="mapfile" bsSize="large">
-                        <ControlLabel>Upload map</ControlLabel>
+                    <FormGroup controlId="address" bsSize="large">
+                        <ControlLabel>Address</ControlLabel>
                         <FormControl
-                            name="mapfile"
-                            id="mapfile"
-                            value={this.state.mapfile}
+                            name="address"
+                            id="address"
+                            value={this.state.address}
                             onChange={this.handleChange}
-                            type="file"
+                            type="text"
                         />
                     </FormGroup>
-                    <FormGroup controlId="mapsprites" bsSize="large">
-                        <ControlLabel>Upload sprites</ControlLabel>
+                    <FormGroup controlId="phoneNumber" bsSize="large">
+                        <ControlLabel>phoneNumber</ControlLabel>
                         <FormControl
-                            name="mapsprites"
-                            id="mapsprites"
-                            value={this.state.mapsprites}
+                            name="phoneNumber"
+                            id="phoneNumber"
+                            value={this.state.phoneNumber}
                             onChange={this.handleChange}
-                            type="file"
+                            type="text"
                         />
                     </FormGroup>
-                    <FormGroup controlId="mapriddle" bsSize="large">
-                    <ControlLabel>Upload riddle</ControlLabel>
+                    <FormGroup controlId="rank" bsSize="large">
+                    <ControlLabel>Rank</ControlLabel>
                     <FormControl
-                        name="mapriddle"
-                        id="mapriddle"
-                        value={this.state.mapriddle}
+                        name="rank"
+                        id="rank"
+                        value={this.state.rank}
                         onChange={this.handleChange}
-                        type="file"
+                        type="number"
                     />
                 </FormGroup>
-                    {this.state.riddles.map(riddle =>
-                        this.addRiddle(this.state.riddles.indexOf(riddle))
-                    )}
-                    <Button
-                        block
-                        onClick={this.handleAddRiddle}
-                        disabled={!this.validateAdd()}
-                        bsSize="medium"
-                        type="button"
-                    >Add riddle</Button>
-                    <Button
-                        block
-                        onClick={this.handleRemoveRiddle}
-                        disabled={!this.validateRemove()}
-                        bsSize="medium"
-                        type="button"
-                    >Remove riddle</Button>
                     <Button
                         block
                         bsSize="large"

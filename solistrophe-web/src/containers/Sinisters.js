@@ -40,7 +40,7 @@ export default class Sinisters extends Component {
                 {this.state.items.map(plugin =>
                     <div class="Map" id={plugin.name}>
                         <p>{plugin.name}</p>
-                        <p>{plugin.description}</p>
+                        <p>{plugin.firstname}</p>
                         <form method="get" action={"http://localhost:8080/plugin/download/" + plugin.name} ><button type="submit">Download!</button></form>
                         <form  onSubmit={this.handledelete(plugin.name)} ><button type="submit">Delete</button></form>
                     </div>
