@@ -8,6 +8,21 @@ export default class Auth{
         this.getProfile = this.getProfile.bind(this)
     }
 
+    banUser(accountId){
+        let newRank = 0;
+        accountId = accountId.toString();
+        console.log(accountId + '' + newRank);
+        return this.fetch(`${this.domain}/Accounts/updateRank?access_token=` + this.getToken(),{
+            method: 'POST',
+                body: JSON.stringify({
+                accountId,
+                newRank
+            })
+        }).then(res => {
+            return Promise.resolve(res);
+        })
+    }
+
     login(username, password) {
         // Get a token from api server using the fetch api
         let result = this.fetch(`${this.domain}/Accounts/login`, {
