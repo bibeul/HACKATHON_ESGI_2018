@@ -204,12 +204,22 @@
                 android:textSize="30dp" />
 
             <Button
-                android:id="@+id/signInButton"
+                android:id="@+id/createButton"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/authent_button"
                 android:text="@string/create"
                 android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/cancelrButton"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:textSize="10dp"
+                android:text="cancel"
+                android:textColor="#6B7782"/>
 
         </LinearLayout>
     </ScrollView>

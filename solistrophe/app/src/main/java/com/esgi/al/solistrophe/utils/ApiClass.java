@@ -92,7 +92,6 @@ public class ApiClass {
 
     public static String connection(String email, String password) {
         String uri = url + "Accounts/login";
-        System.out.println("\n\nurl: " + uri);
         RequestBody formBody;
 
         if(email.contains("@")){
@@ -107,6 +106,29 @@ public class ApiClass {
                     .add("password", password)
                     .build();
         }
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String register(String firstname, String lastname, String phone, String address,
+                                  String username, String email, String password) {
+        String uri = url + "Accounts/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("firstname", firstname)
+                .add("lastname", lastname)
+                .add("phoneNumber", phone)
+                .add("address", address)
+                .add("username", username)
+                .add("email", email)
+                .add("password", password)
+                .build();
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");
         if(response == null){
