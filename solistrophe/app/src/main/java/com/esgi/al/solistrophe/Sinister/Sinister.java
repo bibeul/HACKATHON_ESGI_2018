@@ -1,6 +1,8 @@
 package com.esgi.al.solistrophe.Sinister;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Toolbar;
 
 import com.esgi.al.solistrophe.R;
+import com.esgi.al.solistrophe.login.Register;
+import com.esgi.al.solistrophe.login.Signin;
 
 import java.util.ArrayList;
 
@@ -28,6 +32,14 @@ public class Sinister extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        FloatingActionButton fab = findViewById(R.id.declaredSinister);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Sinister.this, DeclaredSinister.class);
+                startActivity(intent);
+            }
+        });
 
         listView = (ListView) findViewById(R.id.sinister_list);
 

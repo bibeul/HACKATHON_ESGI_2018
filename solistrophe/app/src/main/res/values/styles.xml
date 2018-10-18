@@ -22,4 +22,9 @@
         <item name="android:textColorSecondary">#000000</item>
     </style>
 
+    <style name="floatButton" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#F8F826</item>
+    </style>
+
 </resources>
