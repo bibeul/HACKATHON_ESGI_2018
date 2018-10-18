@@ -15,7 +15,8 @@ export default class User extends Component {
             phoneNumber: "",
             rank: "",
             email: "",
-            userid: this.props.match.params.userid
+            userid: this.props.match.params.userid,
+            items: []
         }
     }
 
@@ -54,10 +55,22 @@ export default class User extends Component {
             alert('Please login')
             this.props.history.replace('/login');
         }
-        this.Auth.fetch(this.Auth.domain + '/Accounts/' + this.state.userid + '?access_token=' + this.Auth.getToken(),{
+        console.log(this.state.userid);
+
+        this.Auth.fetch(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(),{
             method: 'GET'
-        }).then(res => {
-            console.log(res);
+        }).then(items => this.setState({items}));
+
+        this.state.items.map(item => {
+            if(item.id === this.state.userid){
+                this.state.username = item.username;
+                this.state.rank = item.rank;
+                this.state.phoneNumber = item.phoneNumber;
+                this.state.lastname = item.lastname;
+                this.state.firstname = item.firstname;
+                this.state.email = item.email;
+                this.state.address = item.address;
+            }
         })
     }
 

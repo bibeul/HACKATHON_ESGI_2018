@@ -12,7 +12,6 @@ export default class Users extends Component {
         this.Auth = new Auth();
         this.state = {
             items: []
-
         }
     }
 
