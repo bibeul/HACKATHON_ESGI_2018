@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/background"
     tools:context="com.esgi.al.solistrophe.login.Signin">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
@@ -21,115 +19,199 @@
 
 
         <ImageView
-            android:layout_marginTop="50dp"
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             app:srcCompat="@drawable/logo" />
 
     </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context="com.esgi.al.solistrophe.login.Signin">
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FirstName"
-            android:textColor="#2F302F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context="com.esgi.al.solistrophe.login.Signin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FirstName"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/firstNameText"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:textSize="30dp"
-            android:textColor="#2F302F"
-            android:backgroundTint="#6B7782"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:text="" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LastName"
-            android:textColor="#2F302F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/firstNameText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LastName"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/lastNamenText"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:textSize="30dp"
-            android:textColor="#2F302F"
-            android:backgroundTint="#6B7782"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:text="" />
+            <EditText
+                android:id="@+id/lastNamenText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username"
-            android:textColor="#2F302F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
-            android:id="@+id/usernameText"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:textSize="30dp"
-            android:textColor="#2F302F"
-            android:backgroundTint="#6B7782"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:text="" />
+            <EditText
+                android:id="@+id/usernameText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:textColor="#2F302F"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/passwordText"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:textSize="30dp"
-            android:textColor="#2F302F"
-            android:backgroundTint="#6B7782"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPassword"
-            android:text="" />
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPassword"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
 
-        <Button
-            android:id="@+id/signInButton"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:background="@drawable/authent_button"
-            android:text="@string/create"
-            android:textColor="#FFFFFF"/>
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textEmailAddress"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/addressText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/phoneText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/signInButton"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:background="@drawable/authent_button"
+                android:text="@string/create"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
