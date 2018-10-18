@@ -29,7 +29,7 @@ public class Signin extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiClass.signIn(login.getText().toString(),password.getText().toString());
+                ApiClass.connection(login.getText().toString(),password.getText().toString());
                 System.out.println(apiClass.getAuth());
 //                Intent intent = new Intent(Signin.this, Menu.class);
 //                startActivity(intent);
