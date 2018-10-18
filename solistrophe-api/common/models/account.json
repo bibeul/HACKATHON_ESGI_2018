@@ -19,7 +19,8 @@
       "required": true
     },
     "location": {
-      "type": "geopoint"
+      "type": "geopoint",
+      "required": false
     },
     "address": {
       "type": "string",
