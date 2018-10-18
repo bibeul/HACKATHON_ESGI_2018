@@ -18,6 +18,7 @@ public class ApiClass {
     private static String url = "http://192.168.43.61:3000/api/";
     private String api_key = null;
     private static JsonNode auth = null;
+    private static JsonNode resp = null;
     private static ObjectMapper mapper = new ObjectMapper();
 
     public static String setOkHttpRequest(String url, RequestBody formBody, Boolean connection, String type) {
@@ -84,7 +85,7 @@ public class ApiClass {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                auth = mapper.readTree(response.body().string());
+                resp = mapper.readTree(response.body().string());
             }
         });
         return null;
@@ -108,6 +109,7 @@ public class ApiClass {
         }
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");
+        auth = resp;
         if(response == null){
             return null;
         }else{
@@ -150,6 +152,7 @@ public class ApiClass {
                 .build();
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");
+
         if(response == null){
             return null;
         }else{
@@ -163,5 +166,13 @@ public class ApiClass {
 
     public JsonNode getAuth() {
         return auth;
+    }
+
+    public void setAuth(JsonNode jsonNode){
+        auth = jsonNode;
+    }
+
+    public JsonNode getResp() {
+        return resp;
     }
 }

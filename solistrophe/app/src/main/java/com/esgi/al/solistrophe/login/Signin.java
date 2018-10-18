@@ -39,8 +39,9 @@ public class Signin extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (apiClass.getAuth() != null) {
-                    if(apiClass.getAuth().get("id") != null){
+                if (apiClass.getResp() != null) {
+                    if(apiClass.getResp().get("id") != null){
+                        apiClass.setAuth(apiClass.getResp());
                         System.out.println(apiClass.getAuth());
                         Intent intent = new Intent(Signin.this, Menu.class);
                         startActivity(intent);
