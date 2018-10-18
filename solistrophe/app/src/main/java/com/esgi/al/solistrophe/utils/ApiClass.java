@@ -138,6 +138,25 @@ public class ApiClass {
         }
     }
 
+    public static String declaredSinister(String name, String description, String severity, String userId) {
+        String uri = url + "Sinisters/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("name", name)
+                .add("description", description)
+                .add("severity", severity)
+                .add("accountId", userId)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
     public String getApi_key() {
         return api_key;
     }
