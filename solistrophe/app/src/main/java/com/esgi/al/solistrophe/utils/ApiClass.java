@@ -15,7 +15,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ApiClass {
-    private static String url = "http://10.33.3.210:3000/api/";
+    private static String url = "http://192.168.43.61:3000/api/";
     private String api_key = null;
     private static JsonNode auth = null;
     private static ObjectMapper mapper = new ObjectMapper();
@@ -128,6 +128,25 @@ public class ApiClass {
                 .add("username", username)
                 .add("email", email)
                 .add("password", password)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String declaredSinister(String name, String description, String severity, String userId) {
+        String uri = url + "Sinisters/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("name", name)
+                .add("description", description)
+                .add("severity", severity)
+                .add("accountId", userId)
                 .build();
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");
