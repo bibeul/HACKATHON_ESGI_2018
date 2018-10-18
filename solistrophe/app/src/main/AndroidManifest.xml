@@ -25,6 +25,7 @@
         <activity android:name=".login.Register" />
         <activity android:name=".menu.Menu" />
         <activity android:name=".Sinister.Sinister"></activity>
+        <activity android:name=".Sinister.DeclaredSinister"></activity>
     </application>
 
 </manifest>
