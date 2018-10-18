@@ -1,0 +1,94 @@
+{
+  "name": "Account",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "geopoint"
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "rank": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "validations": [],
+  "relations": {
+    "services": {
+      "type": "hasAndBelongsToMany",
+      "model": "service",
+      "foreignKey": ""
+    },
+    "marks": {
+      "type": "hasMany",
+      "model": "Mark",
+      "foreignKey": ""
+    },
+    "reports": {
+      "type": "hasMany",
+      "model": "Report",
+      "foreignKey": ""
+    },
+    "sinisters": {
+      "type": "hasMany",
+      "model": "Sinister",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__findById__services"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "updateRank"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findAllMatches"
+    }
+  ],
+  "methods": {
+  }
+}
