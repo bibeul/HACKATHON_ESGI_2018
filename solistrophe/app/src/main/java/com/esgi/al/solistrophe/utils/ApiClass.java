@@ -1,5 +1,8 @@
 package com.esgi.al.solistrophe.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -12,9 +15,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ApiClass {
-    private static String url = "http://10.33.0.108:3000/api/";
+    private static String url = "http://10.33.3.210:3000/api/";
     private String api_key = null;
-    private static String auth = null;
+    private static JsonNode auth = null;
+    private static ObjectMapper mapper = new ObjectMapper();
 
     public static String setOkHttpRequest(String url, RequestBody formBody, Boolean connection, String type) {
         OkHttpClient client = new OkHttpClient();
@@ -80,8 +84,7 @@ public class ApiClass {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                auth = response.body().string();
-                System.out.println("auth: " + auth);
+                auth = mapper.readTree(response.body().string());
             }
         });
         return null;
@@ -117,7 +120,7 @@ public class ApiClass {
         return api_key;
     }
 
-    public String getAuth() {
+    public JsonNode getAuth() {
         return auth;
     }
 }

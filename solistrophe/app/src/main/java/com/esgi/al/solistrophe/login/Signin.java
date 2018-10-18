@@ -1,11 +1,13 @@
 package com.esgi.al.solistrophe.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.esgi.al.solistrophe.R;
 import com.esgi.al.solistrophe.menu.Menu;
@@ -32,11 +34,28 @@ public class Signin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ApiClass.connection(login.getText().toString(),password.getText().toString());
-                System.out.println("***********************");
-                System.out.println("auth: " + apiClass.getAuth());
-                System.out.println("***********************");
-//                Intent intent = new Intent(Signin.this, Menu.class);
-//                startActivity(intent);
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (apiClass.getAuth() != null) {
+                    System.out.println("***********************");
+                    System.out.println(apiClass.getAuth());
+                    System.out.println("***********************");
+                    if(apiClass.getAuth().get("id") != null){
+                        Intent intent = new Intent(Signin.this, Menu.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Login / Password incorrect";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
             }
         });
 
