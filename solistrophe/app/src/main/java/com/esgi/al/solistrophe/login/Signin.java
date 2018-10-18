@@ -11,6 +11,8 @@ import com.esgi.al.solistrophe.R;
 import com.esgi.al.solistrophe.menu.Menu;
 import com.esgi.al.solistrophe.utils.ApiClass;
 
+import java.io.IOException;
+
 public class Signin extends AppCompatActivity {
 
     @Override
@@ -30,7 +32,9 @@ public class Signin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ApiClass.connection(login.getText().toString(),password.getText().toString());
-                System.out.println(apiClass.getAuth());
+                System.out.println("***********************");
+                System.out.println("auth: " + apiClass.getAuth());
+                System.out.println("***********************");
 //                Intent intent = new Intent(Signin.this, Menu.class);
 //                startActivity(intent);
             }

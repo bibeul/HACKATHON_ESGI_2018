@@ -1,18 +1,18 @@
 package com.esgi.al.solistrophe.utils;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.Objects;
 
-import okhttp3.*;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ApiClass {
-    private static String url = "http://localhost:3000/api/";
+    private static String url = "http://10.33.0.108:3000/api/";
     private String api_key = null;
     private static String auth = null;
 
@@ -70,29 +70,26 @@ public class ApiClass {
                     .delete()
                     .build();
         }
-        Call call = client.newCall(request);
-        Response response = null;
-        try {
-            response = call.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(Objects.requireNonNull(response).code() != 200){
-            return null;
-        }else{
-            try {
-                return response.body().string();
-            } catch (IOException e) {
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("notok");
                 e.printStackTrace();
-                return null;
-            }finally {
-                response.body().close();
             }
-        }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                auth = response.body().string();
+                System.out.println("auth: " + auth);
+            }
+        });
+        return null;
     }
 
     public static String connection(String email, String password) {
-        String uri = url + "Accounts";
+        String uri = url + "Accounts/login";
+        System.out.println("\n\nurl: " + uri);
         RequestBody formBody;
 
         if(email.contains("@")){
@@ -112,7 +109,6 @@ public class ApiClass {
         if(response == null){
             return null;
         }else{
-            auth = response;
             return response;
         }
     }
