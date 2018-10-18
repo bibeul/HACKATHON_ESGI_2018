@@ -17,7 +17,7 @@ public class ApiClass {
 
     private static HttpURLConnection con;
 
-    private String url = "http://localhost:8080/";
+    private String url = "http://localhost:3000/api/";
     private String api_key = null;
     private String auth = null;
 
@@ -96,6 +96,7 @@ public class ApiClass {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode jsonNode = mapper.readTree(con.getInputStream());
 
+                System.out.println(jsonNode);
                 api_key = jsonNode.get("token").toString();
 
                 auth = jsonNode.get("auth").toString();

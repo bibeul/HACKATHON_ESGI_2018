@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.esgi.al.solistrophe.R;
 import com.esgi.al.solistrophe.menu.Menu;
+import com.esgi.al.solistrophe.utils.ApiClass;
 
 public class Signin extends AppCompatActivity {
 
@@ -23,11 +24,15 @@ public class Signin extends AppCompatActivity {
         final EditText login = findViewById(R.id.loginText);
         final EditText password = findViewById(R.id.passwordText);
 
+        final ApiClass apiClass = new ApiClass();
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Signin.this, Menu.class);
-                startActivity(intent);
+                apiClass.signIn(login.getText().toString(),password.getText().toString());
+                System.out.println(apiClass.getAuth());
+//                Intent intent = new Intent(Signin.this, Menu.class);
+//                startActivity(intent);
             }
         });
 
