@@ -12,8 +12,12 @@
 *.xml
 .DS_Store
 .idea
+.idea/*
 .project
+.project/*
 .strong-pm
+.strong-pm/*
 coverage
 node_modules
+node_modules/*
 npm-debug.log
