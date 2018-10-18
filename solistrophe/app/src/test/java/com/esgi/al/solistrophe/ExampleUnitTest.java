@@ -1,4 +1,4 @@
-package al.esgi.com.solistrophe;
+package com.esgi.al.solistrophe;
 
 import org.junit.Test;
 

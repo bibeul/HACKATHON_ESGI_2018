@@ -1,4 +1,4 @@
-package al.esgi.com.solistrophe.login;
+package com.esgi.al.solistrophe.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package al.esgi.com.solistrophe;
+package com.esgi.al.solistrophe;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

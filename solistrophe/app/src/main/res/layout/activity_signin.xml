@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".login.Signin">
+    tools:context="com.esgi.al.solistrophe.login.Signin">
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,7 +17,7 @@
         android:layout_height="100dp"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".login.Signin">
+        tools:context="com.esgi.al.solistrophe.login.Signin">
 
 
         <ImageView
@@ -35,7 +35,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".login.Signin">
+        tools:context="com.esgi.al.solistrophe.login.Signin">
 
         <TextView
             android:layout_width="wrap_content"
