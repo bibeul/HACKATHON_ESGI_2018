@@ -72,7 +72,12 @@ public class ApiClass {
     public void signIn(String username, String password) {
         JSONObject postData = new JSONObject();
         try {
-            postData.put("username", username);
+            if (username.contains("@")){
+                postData.put("email", username);
+            }
+            else {
+                postData.put("username", username);
+            }
             postData.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();
