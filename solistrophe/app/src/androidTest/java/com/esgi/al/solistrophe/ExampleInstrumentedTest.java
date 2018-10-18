@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("al.esgi.com.solistrophe", appContext.getPackageName());
+        assertEquals("com.esgi.al.solistrophe", appContext.getPackageName());
     }
 }

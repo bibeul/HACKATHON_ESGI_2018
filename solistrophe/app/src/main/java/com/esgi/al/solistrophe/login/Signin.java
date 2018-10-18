@@ -1,13 +1,14 @@
 package com.esgi.al.solistrophe.login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import al.esgi.com.solistrophe.R;
+import com.esgi.al.solistrophe.R;
+import com.esgi.al.solistrophe.menu.Menu;
 
 public class Signin extends AppCompatActivity {
 
@@ -25,8 +26,8 @@ public class Signin extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(login.getText());
-                System.out.println(password.getText());
+                Intent intent = new Intent(Signin.this, Menu.class);
+                startActivity(intent);
             }
         });
 

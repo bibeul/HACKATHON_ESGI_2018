@@ -3,7 +3,7 @@ package com.esgi.al.solistrophe.login;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import al.esgi.com.solistrophe.R;
+import com.esgi.al.solistrophe.R;
 
 public class Register extends AppCompatActivity {
 
