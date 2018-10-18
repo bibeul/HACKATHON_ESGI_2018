@@ -10,7 +10,7 @@ export default class Auth{
 
     login(username, password) {
         // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/Accounts/login`, {
+        let result = this.fetch(`${this.domain}/Accounts/login`, {
             method: 'POST',
             body: JSON.stringify({
                 username,
@@ -18,17 +18,18 @@ export default class Auth{
             })
         }).then(res => {
             this.setToken(res.id) // Setting the token in localStorage
-            this.fetch(`${this.domain}/Accounts/`+ res.userId + '?access_token=' + this.getToken(), {
+            return this.fetch(`${this.domain}/Accounts/`+ res.userId + '?access_token=' + this.getToken(), {
                 method: 'GET'
             }).then(res => {
                 if(res.rank < 2){
                     this.setToken('');
-                    return Promise.reject(new Error('fail'))
-                } else {
-                    return Promise.resolve(res);
+                    return Promise.reject('Wrong Rank');
                 }
+                return Promise.resolve(res);
             })
         })
+        console.log(result);
+        return result;
     }
 
     register(username, email, password, firstname, lastname, phoneNumber, address) {

@@ -1,9 +1,9 @@
 @media all and (min-width: 480px) {
-    .Maps {
+    .Users {
         text-align: center;
     }
 
-    .Map {
+    .User {
         display: inline-block;
         text-align: center;
         background: #999999;

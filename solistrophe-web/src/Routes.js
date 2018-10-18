@@ -6,8 +6,7 @@ import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
 import Sinisters from "./containers/Sinisters";
 import Signup from "./containers/Signup";
-import UploadMap from "./containers/UploadMap";
-import UploadPlugin from "./containers/UploadPlugin";
+import UserProfile from "./containers/User"
 import AppliedRoute from "./components/AppliedRoute";
 
 
@@ -19,8 +18,7 @@ export default ({ childProps }) =>
         <Route path="/users" exact component={Users} />
         <Route path="/sinisters" exact component={Sinisters} />
         <Route path="/register" exact component={Signup} />
-        <Route path="/uploadMap" exact component={UploadMap}/>
-        <Route path="/uploadPlugin" exact component={UploadPlugin}/>
+        <Route path="/user/:userid" component={UserProfile}/>
         <Route component={NotFound} />
     </Switch>;
 

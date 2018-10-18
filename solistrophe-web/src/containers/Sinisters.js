@@ -5,7 +5,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Auth from './Auth';
 
-export default class Plugins extends Component {
+export default class Sinisters extends Component {
     constructor(props){
         super(props);
         this.Auth = new Auth();

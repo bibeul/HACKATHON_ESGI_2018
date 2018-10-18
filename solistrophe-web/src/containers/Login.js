@@ -29,11 +29,8 @@ export default class Login extends Component {
 
         this.Auth.login(this.state.username,this.state.password)
             .then(res =>{
-                if(res != null){
-                    this.props.userHasAuthenticated(true);
-                    this.props.history.replace('/');
-                }
-
+                this.props.userHasAuthenticated(true);
+                this.props.history.replace('/');
             })
             .catch(err =>{
                 alert(err);

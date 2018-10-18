@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import "../style/Maps.css";
+import "../style/Users.css";
 import { Link } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import Auth from './Auth';
 
-export default class Maps extends Component {
+export default class Users extends Component {
     constructor(props){
         super(props);
         this.Auth = new Auth();
@@ -17,7 +17,7 @@ export default class Maps extends Component {
     }
 
     componentWillMount(){
-        this.Auth.fetch('http://localhost:8080/map/displayAll',{
+        this.Auth.fetch(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(),{
             method: 'GET'
         })
             .then(items => this.setState({items}));
@@ -37,28 +37,17 @@ export default class Maps extends Component {
 
     render(){
         return (
-                <div class="Maps">
-                {this.state.items.map(map =>
-                    <div class="Map" id={map.id}>
-                        <p>{map.name}</p>
-                            <p>{map.description}</p>
+                <div class="Users">
+                {this.state.items.map(user =>
+                    <div class="User" id={user.id}>
+                        <p>{user.firstname}</p>
+                        <p>{user.lastname}</p>
                         <div class="allButton">
-                        <form method="get" action={"http://localhost:8080/map/download/" + map.name} ><button type="submit">Download!</button></form>
-                            <LinkContainer to={"/map/"+map.name}><button type="submit">Check Score</button></LinkContainer>
-                            <form  onSubmit={this.handledelete(map.name)} ><button type="submit">Delete</button></form>
+                            <LinkContainer to={"/user/"+user.name}><button type="submit">Edit user</button></LinkContainer>
+                            <LinkContainer to={"/user/"+user.name}><button type="submit">Ban User</button></LinkContainer>
                         </div>
                     </div>
                 )}
-                <div class="Button">
-                    <LinkContainer to="/uploadMap">
-                        <Button
-                        block
-                        bsSize="large"
-                        type="submit"
-                    >
-                        Upload
-                    </Button></LinkContainer>
-                </div>
                 </div>
         );
     }
