@@ -11,7 +11,6 @@
         android:icon="@drawable/web_hi_res_512"
         android:label="Solistrophe"
         android:logo="@drawable/web_hi_res_512"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".login.Signin">
