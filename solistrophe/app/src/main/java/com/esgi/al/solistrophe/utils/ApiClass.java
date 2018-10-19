@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -193,6 +192,24 @@ public class ApiClass {
                 .add("severity", severity)
                 .add("state", "0")
                 .add("accountId", userId)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String declaredService(String name, String description) {
+        String uri = url + "services/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("name", name)
+                .add("description", description)
                 .build();
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");

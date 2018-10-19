@@ -11,17 +11,17 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Sinister.Sinister"
+        tools:context=".Services.Service"
         android:orientation="vertical">
 
-        <include layout="@layout/content_sinister" />
+        <include layout="@layout/content_service" />
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_service"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/declaredSinister"
+        android:id="@+id/declaredService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
