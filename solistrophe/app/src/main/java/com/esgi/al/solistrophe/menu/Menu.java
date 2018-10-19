@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.esgi.al.solistrophe.R;
+import com.esgi.al.solistrophe.Services.Service;
 import com.esgi.al.solistrophe.Sinister.Sinister;
 
 public class Menu extends AppCompatActivity {
@@ -37,6 +38,14 @@ public class Menu extends AppCompatActivity {
 
                 Intent intent = new Intent(Menu.this, Sinister.class);
                 startActivity(intent);            }
+        });
+
+        declare_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Service.class);
+                startActivity(intent);
+            }
         });
 
     }

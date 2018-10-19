@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context="com.esgi.al.solistrophe.Services.Service" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top"
+        android:orientation="vertical"
+        tools:context="com.esgi.al.solistrophe.Services.Service">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/logo" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            xmlns:numberpicker="http://schemas.android.com/apk/res-auto"
+            tools:context="com.esgi.al.solistrophe.Services.Service">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/nameServiceText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="20dp"
+                android:textColor="#2F302F"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/descriptionServiceText"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#6B7782"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textColor="#2F302F"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/createServiceButton"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/authent_button"
+                android:text="@string/create"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/cancelServiceButton"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background"
+                android:textSize="10dp"
+                android:text="cancel"
+                android:textColor="#6B7782"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
