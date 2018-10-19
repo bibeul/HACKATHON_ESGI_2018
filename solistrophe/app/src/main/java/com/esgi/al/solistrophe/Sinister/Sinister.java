@@ -10,12 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toolbar;
 
 import com.esgi.al.solistrophe.R;
-import com.esgi.al.solistrophe.login.Register;
-import com.esgi.al.solistrophe.login.Signin;
-import com.esgi.al.solistrophe.login.Signin;
 import com.esgi.al.solistrophe.utils.ApiClass;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -50,14 +46,14 @@ public class Sinister extends AppCompatActivity {
         datas = new ArrayList<>();
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         ApiClass.findAllMatches(apiClass.getResp().get("location").get("lng").asText(), apiClass.getResp().get("location").get("lat").asText());
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -66,7 +62,7 @@ public class Sinister extends AppCompatActivity {
             ApiClass.getMatchesSinister(jsonnode.get("id").asText());
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -78,13 +74,6 @@ public class Sinister extends AppCompatActivity {
                 }
             }
         }
-
-        //ApiClass.getMatchesServices()
-
-        /*datas.add(new com.esgi.al.solistrophe.model.Sinister("Innondation", "Cave innondé", 3, 0, 1,1997));
-        datas.add(new com.esgi.al.solistrophe.model.Sinister("ORAGE", "TONERRE", 0, 1, 2,7991));
-        datas.add(new com.esgi.al.solistrophe.model.Sinister("Feu de foret", "Ma maison elle est toute brulée", 2, 2, 3,79491));
-        datas.add(new com.esgi.al.solistrophe.model.Sinister("Frizer", "Super mechant", 5, 15, 4,7966591));*/
 
         adapter = new CustomAdapter(datas, getApplicationContext());
 

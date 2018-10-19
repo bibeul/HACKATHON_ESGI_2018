@@ -35,7 +35,7 @@ public class Signin extends AppCompatActivity {
             public void onClick(View v) {
                 ApiClass.connection(login.getText().toString(),password.getText().toString());
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
