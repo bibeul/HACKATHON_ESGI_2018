@@ -70,9 +70,12 @@ public class Sinister extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.println(apiClass.getResp());
 
-            if(apiClass.getResp().size() != 0){
-                datas.add(new com.esgi.al.solistrophe.model.Sinister(apiClass.getResp().get(0).get("name").asText(), apiClass.getResp().get(0).get("description").asText(), apiClass.getResp().get(0).get("severity").asInt(), apiClass.getResp().get(0).get("state").asInt(), apiClass.getResp().get(0).get("id").asInt(),apiClass.getResp().get(0).get("accountId").asInt()));
+            for (JsonNode sinister : apiClass.getResp()){
+                if( sinister.get("accountId") != apiClass.getAuth().get("userId")){
+                    datas.add(new com.esgi.al.solistrophe.model.Sinister(sinister.get("name").asText(), sinister.get("description").asText(), sinister.get("severity").asInt(), sinister.get("state").asInt(), sinister.get("id").asInt(),sinister.get("accountId").asInt()));
+                }
             }
         }
 
