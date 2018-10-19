@@ -121,7 +121,10 @@ export default class Auth{
             ...options
         })
             .then(this._checkStatus)
-            .then(response => response.json())
+            .then(response => {
+                if(response !== undefined)
+                    return response.json();
+            })
     }
 
     fetchDelete(url, options) {

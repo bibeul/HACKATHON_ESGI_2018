@@ -8,6 +8,7 @@ export default class User extends Component {
         super(props);
         this.Auth = new Auth();
         this.state = {
+            loaded: "",
             username: "",
             lastname: "",
             firstname: "",
@@ -39,7 +40,7 @@ export default class User extends Component {
         var form = document.forms.namedItem("mapUpload");
         var formdata = new FormData(form);
         console.log("test");
-        this.Auth.fetchForm('http://localhost:8080/map/upload',{
+        this.Auth.fetchForm(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(){
             method: 'POST',
             body: formdata
         }).then(res => {
@@ -56,94 +57,108 @@ export default class User extends Component {
             this.props.history.replace('/login');
         }
         console.log(this.state.userid);
-
-        this.Auth.fetch(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(),{
-            method: 'GET'
-        }).then(items => this.setState({items}));
-
-        this.state.items.map(item => {
-            if(item.id === this.state.userid){
-                this.state.username = item.username;
-                this.state.rank = item.rank;
-                this.state.phoneNumber = item.phoneNumber;
-                this.state.lastname = item.lastname;
-                this.state.firstname = item.firstname;
-                this.state.email = item.email;
-                this.state.address = item.address;
-            }
-        })
     }
 
 
     render() {
-        return (
-            <div className="Upload">
-                <form onSubmit={this.handleSubmit}>
-                    <FormGroup controlId="lastname" bsSize="large">
-                        <ControlLabel>LastName</ControlLabel>
-                        <FormControl
-                            name="lastname"
-                            id="lastname"
-                            maxLength="255"
-                            autoFocus
-                            type="text"
-                            value={this.state.lastname}
-                            onChange={this.handleChange}
-                        />
-                    </FormGroup>
-                    <FormGroup controlId="firstname" bsSize="large">
-                        <ControlLabel>FirstName</ControlLabel>
-                        <FormControl
-                            name="firstname"
-                            maxLength="255"
-                            id="firstname"
-                            autoFocus
-                            type="text"
-                            value={this.state.firstname}
-                            onChange={this.handleChange}
-                        />
-                    </FormGroup>
-                    <FormGroup controlId="address" bsSize="large">
-                        <ControlLabel>Address</ControlLabel>
-                        <FormControl
-                            name="address"
-                            id="address"
-                            value={this.state.address}
-                            onChange={this.handleChange}
-                            type="text"
-                        />
-                    </FormGroup>
-                    <FormGroup controlId="phoneNumber" bsSize="large">
-                        <ControlLabel>phoneNumber</ControlLabel>
-                        <FormControl
-                            name="phoneNumber"
-                            id="phoneNumber"
-                            value={this.state.phoneNumber}
-                            onChange={this.handleChange}
-                            type="text"
-                        />
-                    </FormGroup>
-                    <FormGroup controlId="rank" bsSize="large">
-                    <ControlLabel>Rank</ControlLabel>
-                    <FormControl
-                        name="rank"
-                        id="rank"
-                        value={this.state.rank}
-                        onChange={this.handleChange}
-                        type="number"
-                    />
-                </FormGroup>
-                    <Button
-                        block
-                        bsSize="large"
-                        disabled={!this.validateForm()}
-                        type="submit"
-                    >
-                        Upload
-                    </Button>
-                </form>
-            </div>
+        this.Auth.fetch(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(),{
+            method: 'GET'
+        }).then(items => {
+            this.setState({items});
+            console.log(items);
+            this.state.items.map(item => {
+                if(item.id == this.state.userid){
+                    this.state.username = item.username;
+                    this.state.rank = item.rank;
+                    this.state.phoneNumber = item.phoneNumber;
+                    this.state.lastname = item.lastname;
+                    this.state.firstname = item.firstname;
+                    this.state.email = item.email;
+                    this.state.address = item.address;
+                    console.log(item);
+                    console.log(this.state.firstname)
+                    this.state.loaded = true;
+                }
+            })
+        });
 
-        );
+            return (
+                <div className="Upload">
+                    <form onSubmit={this.handleSubmit}>
+                        <FormGroup controlId="lastname" bsSize="large">
+                            <ControlLabel>LastName</ControlLabel>
+                            <FormControl
+                                name="lastname"
+                                id="lastname"
+                                maxLength="255"
+                                autoFocus
+                                type="text"
+                                value={this.state.lastname}
+                                onChange={this.handleChange}
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="firstname" bsSize="large">
+                            <ControlLabel>FirstName</ControlLabel>
+                            <FormControl
+                                name="firstname"
+                                maxLength="255"
+                                id="firstname"
+                                autoFocus
+                                type="text"
+                                value={this.state.firstname}
+                                onChange={this.handleChange}
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="address" bsSize="large">
+                            <ControlLabel>Address</ControlLabel>
+                            <FormControl
+                                name="address"
+                                id="address"
+                                value={this.state.address}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="phoneNumber" bsSize="large">
+                            <ControlLabel>phoneNumber</ControlLabel>
+                            <FormControl
+                                name="phoneNumber"
+                                id="phoneNumber"
+                                value={this.state.phoneNumber}
+                                onChange={this.handleChange}
+                                type="text"
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="rank" bsSize="large">
+                            <ControlLabel>Rank</ControlLabel>
+                            <FormControl
+                                name="rank"
+                                id="rank"
+                                value={this.state.rank}
+                                onChange={this.handleChange}
+                                type="number"
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="email" bsSize="large">
+                            <ControlLabel>E-mail</ControlLabel>
+                            <FormControl
+                                name="email"
+                                id="email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                type="email"
+                            />
+                        </FormGroup>
+                        <Button
+                            block
+                            bsSize="large"
+                            disabled={!this.validateForm()}
+                            type="submit"
+                        >
+                            Change
+                        </Button>
+                    </form>
+                </div>
+            );
     }
 }

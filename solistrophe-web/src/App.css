@@ -12,6 +12,10 @@
   border-color: #00AAF0;
 }
 
+.navbar-header{
+  width: 75%;
+}
+
 .App .GoHome {
   width:10%;
   height:10%;
