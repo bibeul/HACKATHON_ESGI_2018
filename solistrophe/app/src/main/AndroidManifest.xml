@@ -15,16 +15,29 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".login.Signin">
+        <activity
+            android:name=".login.Signin"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.Register" />
-        <activity android:name=".menu.Menu" />
-        <activity android:name=".Sinister.Sinister"></activity>
+        <activity
+            android:name=".login.Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menu.Menu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Sinister.Sinister"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Sinister.DeclaredSinister"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Services.Service" />
+        <activity android:name=".Services.DeclaredService"></activity>
     </application>
 
 </manifest>

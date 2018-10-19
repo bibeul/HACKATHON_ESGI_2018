@@ -88,6 +88,18 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "findAllMatches"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__sinisters"
     }
   ],
   "methods": {

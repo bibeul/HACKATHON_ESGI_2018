@@ -35,12 +35,14 @@ public class Signin extends AppCompatActivity {
             public void onClick(View v) {
                 ApiClass.connection(login.getText().toString(),password.getText().toString());
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (apiClass.getAuth() != null) {
-                    if(apiClass.getAuth().get("id") != null){
+                if (apiClass.getResp() != null) {
+                    if(apiClass.getResp().get("id") != null){
+                        apiClass.setAuth(apiClass.getResp());
+                        System.out.println(apiClass.getAuth());
                         Intent intent = new Intent(Signin.this, Menu.class);
                         startActivity(intent);
                     }

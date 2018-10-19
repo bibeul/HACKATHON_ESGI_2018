@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -15,9 +14,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ApiClass {
-    private static String url = "http://10.33.3.210:3000/api/";
+    private static String url = "http://10.33.0.108:3000/api/";
     private String api_key = null;
     private static JsonNode auth = null;
+    private static JsonNode resp = null;
     private static ObjectMapper mapper = new ObjectMapper();
 
     public static String setOkHttpRequest(String url, RequestBody formBody, Boolean connection, String type) {
@@ -29,48 +29,52 @@ public class ApiClass {
                 request = new Request.Builder()
                         .url(url)
                         .post(formBody)
+
+
+
+
                         .build();
             } else if (formBody != null) {
                 request = new Request.Builder()
                         .url(url)
-                        .header("Authorization", "Bearer ")
                         .post(formBody)
                         .build();
             } else {
                 request = new Request.Builder()
                         .url(url)
-                        .header("Authorization", "Bearer ")
                         .build();
             }
         } else if (type.equals("GET")) {
-            request = new Request.Builder()
-                    .url(url)
-                    .header("Authorization", "Bearer ")
-                    .build();
+            if(formBody == null){
+                request = new Request.Builder()
+                        .url(url)
+                        .build();
+            }else{
+                request = new Request.Builder()
+                        .url(url)
+                        .post(formBody)
+                        .build();
+            }
         } else if (type.equals("PATCH")) {
             if (formBody != null) {
                 request = new Request.Builder()
                         .url(url)
-                        .header("Authorization", "Bearer ")
                         .patch(formBody)
                         .build();
             } else {
                 request = new Request.Builder()
                         .url(url)
-                        .header("Authorization", "Bearer ")
                         .method("PATCH", null)
                         .build();
             }
         } else if (type.equals("PUT")) {
             request = new Request.Builder()
                     .url(url)
-                    .header("Authorization", "Bearer ")
                     .put(formBody)
                     .build();
         } else if (type.equals("DELETE")) {
             request = new Request.Builder()
                     .url(url)
-                    .header("Authorization", "Bearer ")
                     .delete()
                     .build();
         }
@@ -84,7 +88,7 @@ public class ApiClass {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                auth = mapper.readTree(response.body().string());
+                resp = mapper.readTree(response.body().string());
             }
         });
         return null;
@@ -108,6 +112,7 @@ public class ApiClass {
         }
 
         String response = setOkHttpRequest(uri, formBody, true, "POST");
+
         if(response == null){
             return null;
         }else{
@@ -138,11 +143,97 @@ public class ApiClass {
         }
     }
 
+    public static String findAllMatches(String lng, String lat) {
+        String uri = url + "Accounts/findAllMatches";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("longitude", lng)
+                .add("latitude", lat)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, false, "POST");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String getMatchesSinister(String id) {
+        String uri = url + "Accounts/" + id + "/sinisters?access_token=" + auth.get("id");
+
+        String response = setOkHttpRequest(uri, null, false, "GET");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String getAccountInformation(String id) {
+        String uri = url + "Accounts/" + id + "?access_token=" + auth.get("id");
+
+        String response = setOkHttpRequest(uri, null, false, "GET");
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String declaredSinister(String name, String description, String severity, String userId) {
+        String uri = url + "Sinisters/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("name", name)
+                .add("description", description)
+                .add("severity", severity)
+                .add("state", "0")
+                .add("accountId", userId)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
+    public static String declaredService(String name, String description) {
+        String uri = url + "services/";
+        RequestBody formBody;
+
+        formBody = new FormBody.Builder()
+                .add("name", name)
+                .add("description", description)
+                .build();
+
+        String response = setOkHttpRequest(uri, formBody, true, "POST");
+
+        if(response == null){
+            return null;
+        }else{
+            return response;
+        }
+    }
+
     public String getApi_key() {
         return api_key;
     }
 
     public JsonNode getAuth() {
         return auth;
+    }
+
+    public void setAuth(JsonNode jsonNode){
+        auth = jsonNode;
+    }
+
+    public JsonNode getResp() {
+        return resp;
     }
 }

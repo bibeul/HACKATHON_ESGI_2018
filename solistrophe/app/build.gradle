@@ -16,7 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions{
+    packagingOptions {
         pickFirst 'META-INF/LICENSE'
     }
 }
@@ -31,6 +31,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.4.1'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
