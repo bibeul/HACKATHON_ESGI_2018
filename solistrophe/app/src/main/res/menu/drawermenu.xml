@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/profile" android:title="Profile" />
-    <item android:id="@+id/postAlert" android:title="PostAlert" />
-    <item android:id="@+id/postService" android:title="PostService" />
-    <item android:id="@+id/moderation" android:title="Moderateur" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group>
+        <item android:id="@+id/picture"
+        android:icon="@drawable/profile_unknow"
+        android:title="" />
+        <item android:id="@+id/profile" android:title="Profile"/>
+        <item android:id="@+id/postAlert" android:title="PostAlert" />
+        <item android:id="@+id/postService" android:title="PostService" />
+        <item android:id="@+id/moderation" android:title="Moderateur" />
+        <item android:id="@+id/mySinister" android:title="mes sinistres" />
+    </group>
+
 </menu>

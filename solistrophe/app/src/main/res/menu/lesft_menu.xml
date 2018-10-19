@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".menu.Menu">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Setting"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/new_activity"
+        android:title="Open New Activity"
+        app:showAsAction="always"
+        android:icon="@android:drawable/btn_radio"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:title="Search"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_menu_search"/>
+
+</menu>

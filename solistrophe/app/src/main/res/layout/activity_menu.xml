@@ -9,11 +9,11 @@
     tools:context=".menu.Menu">
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/lightGrey"
-        app:itemIconTint="@color/darkGrey"
         app:itemTextColor="@color/darkGrey"
         app:menu="@menu/drawermenu">
 

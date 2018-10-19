@@ -70,7 +70,6 @@ public class Sinister extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(apiClass.getResp());
 
             for (JsonNode sinister : apiClass.getResp()){
                 if( sinister.get("accountId") != apiClass.getAuth().get("userId")){
