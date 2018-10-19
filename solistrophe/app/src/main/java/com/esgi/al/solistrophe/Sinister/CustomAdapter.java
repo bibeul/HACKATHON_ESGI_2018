@@ -73,8 +73,6 @@ public class CustomAdapter extends ArrayAdapter<Sinister> implements View.OnClic
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.sinister_row, parent, false);
             viewHolder.state = convertView.findViewById(R.id.sinister_state);
-            viewHolder.txtAccountId = (TextView) convertView.findViewById(R.id.sinister_accountId);
-            viewHolder.txtId = (TextView) convertView.findViewById(R.id.sinister_id);
             viewHolder.txtDescription = (TextView) convertView.findViewById(R.id.sinister_description);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.sinister_name);
             viewHolder.txtSeverity = (TextView) convertView.findViewById(R.id.sinister_severity);
@@ -94,9 +92,7 @@ public class CustomAdapter extends ArrayAdapter<Sinister> implements View.OnClic
 
         viewHolder.txtName.setText(model.getName());
         viewHolder.txtDescription.setText(model.getDescription());
-        viewHolder.txtAccountId.setText("ID ACCOUNT: " + model.getAccountId());
         viewHolder.txtSeverity.setText("SEVERITY: " + model.getSeverity());
-        viewHolder.txtId.setText("ID:" + model.getId());
 
         switch (model.getState()) {
             case 0:

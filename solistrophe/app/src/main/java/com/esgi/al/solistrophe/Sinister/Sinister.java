@@ -50,14 +50,14 @@ public class Sinister extends AppCompatActivity {
         datas = new ArrayList<>();
 
         try {
-            Thread.sleep(500);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         ApiClass.findAllMatches(apiClass.getResp().get("location").get("lng").asText(), apiClass.getResp().get("location").get("lat").asText());
         try {
-            Thread.sleep(500);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class Sinister extends AppCompatActivity {
             ApiClass.getMatchesSinister(jsonnode.get("id").asText());
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
