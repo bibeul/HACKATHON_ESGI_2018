@@ -37,15 +37,27 @@ export default class User extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        var form = document.forms.namedItem("mapUpload");
-        var formdata = new FormData(form);
+        this.sendChange();
         console.log("test");
-        this.Auth.fetchForm(this.Auth.domain + '/Accounts?access_token=' + this.Auth.getToken(){
-            method: 'POST',
-            body: formdata
+    }
+
+    sendChange() {
+        this.Auth.fetchForm(this.Auth.domain + '/Accounts/' + this.state.userid + '?access_token=' + this.Auth.getToken(),{
+            method: 'PATCH',
+            body: JSON.stringify(
+                this.state.username,
+                this.state.rank,
+                this.state.phoneNumber,
+                this.state.lastname,
+                this.state.firstname,
+                this.state.email,
+                this.state.address
+            )
         }).then(res => {
-            if(res.status === 201)
-                this.props.history.replace('/maps');
+            if(res.status === 201){
+                this.props.history.replace('/users');
+                alert("Succesful change");
+            }
         }).catch((err) => {
             alert(err);
         })
@@ -160,5 +172,6 @@ export default class User extends Component {
                     </form>
                 </div>
             );
+        }
     }
 }
