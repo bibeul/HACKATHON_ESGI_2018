@@ -39,6 +39,7 @@ export default class User extends Component {
         event.preventDefault();
         this.sendChange();
         console.log("test");
+        this.sendChange();
     }
 
     sendChange() {
@@ -81,14 +82,12 @@ export default class User extends Component {
             this.state.items.map(item => {
                 if(item.id == this.state.userid){
                     this.state.username = item.username;
+                    this.state.lastname = item.lastname;
                     this.state.rank = item.rank;
                     this.state.phoneNumber = item.phoneNumber;
-                    this.state.lastname = item.lastname;
                     this.state.firstname = item.firstname;
                     this.state.email = item.email;
                     this.state.address = item.address;
-                    console.log(item);
-                    console.log(this.state.firstname)
                     this.state.loaded = true;
                 }
             })
