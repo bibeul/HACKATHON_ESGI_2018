@@ -15,7 +15,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ApiClass {
-    private static String url = "http://192.168.43.61:3000/api/";
+    private static String url = "http://10.33.3.210:3000/api/";
     private String api_key = null;
     private static JsonNode auth = null;
     private static JsonNode resp = null;
@@ -148,6 +148,7 @@ public class ApiClass {
                 .add("name", name)
                 .add("description", description)
                 .add("severity", severity)
+                .add("state", "0")
                 .add("accountId", userId)
                 .build();
 
