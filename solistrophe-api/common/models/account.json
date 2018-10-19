@@ -100,6 +100,12 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "__get__sinisters"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "patchAttributes"
     }
   ],
   "methods": {

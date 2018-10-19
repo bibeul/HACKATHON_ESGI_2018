@@ -44,22 +44,6 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/sinister_description">
 
-        <TextView
-            android:id="@+id/sinister_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/sinister_accountId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ACCOUNT ID:"
-            android:textAppearance="?android:attr/textAppearanceButton"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"/>
-
     </LinearLayout>
 
 </RelativeLayout>
