@@ -29,6 +29,6 @@ module.exports = function(Account) {
   Account.remoteMethod('findAllMatches', {
     accepts: [{arg: 'longitude', type: 'number', required: true}, {arg: 'latitude', type: 'number', required: true}],
     returns: {arg: 'location', type: 'string'},
-    http: {path: '/findAllMatches', verb: 'get'}
+    http: {path: '/findAllMatches', verb: 'post'}
   });
 };

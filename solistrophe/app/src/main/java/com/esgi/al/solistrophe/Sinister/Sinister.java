@@ -15,6 +15,9 @@ import android.widget.Toolbar;
 import com.esgi.al.solistrophe.R;
 import com.esgi.al.solistrophe.login.Register;
 import com.esgi.al.solistrophe.login.Signin;
+import com.esgi.al.solistrophe.login.Signin;
+import com.esgi.al.solistrophe.utils.ApiClass;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import java.util.ArrayList;
 
@@ -24,13 +27,15 @@ public class Sinister extends AppCompatActivity {
     ListView listView;
     private static CustomAdapter adapter;
 
+    final ApiClass apiClass = new ApiClass();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sinister);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        String userId = apiClass.getAuth().get("userId").asText();
+        ApiClass.getAccountInformation(userId);
 
         FloatingActionButton fab = findViewById(R.id.declaredSinister);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,13 +47,41 @@ public class Sinister extends AppCompatActivity {
         });
 
         listView = (ListView) findViewById(R.id.sinister_list);
-
         datas = new ArrayList<>();
 
-        datas.add(new com.esgi.al.solistrophe.model.Sinister("Innondation", "Cave innondé", 3, 0, 1,1997));
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ApiClass.findAllMatches(apiClass.getResp().get("location").get("lng").asText(), apiClass.getResp().get("location").get("lat").asText());
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for (JsonNode jsonnode : apiClass.getResp().get("location")){
+            ApiClass.getMatchesSinister(jsonnode.get("id").asText());
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if(apiClass.getResp().size() != 0){
+                datas.add(new com.esgi.al.solistrophe.model.Sinister(apiClass.getResp().get(0).get("name").asText(), apiClass.getResp().get(0).get("description").asText(), apiClass.getResp().get(0).get("severity").asInt(), apiClass.getResp().get(0).get("state").asInt(), apiClass.getResp().get(0).get("id").asInt(),apiClass.getResp().get(0).get("accountId").asInt()));
+            }
+        }
+
+        //ApiClass.getMatchesServices()
+
+        /*datas.add(new com.esgi.al.solistrophe.model.Sinister("Innondation", "Cave innondé", 3, 0, 1,1997));
         datas.add(new com.esgi.al.solistrophe.model.Sinister("ORAGE", "TONERRE", 0, 1, 2,7991));
         datas.add(new com.esgi.al.solistrophe.model.Sinister("Feu de foret", "Ma maison elle est toute brulée", 2, 2, 3,79491));
-        datas.add(new com.esgi.al.solistrophe.model.Sinister("Frizer", "Super mechant", 5, 15, 4,7966591));
+        datas.add(new com.esgi.al.solistrophe.model.Sinister("Frizer", "Super mechant", 5, 15, 4,7966591));*/
 
         adapter = new CustomAdapter(datas, getApplicationContext());
 
